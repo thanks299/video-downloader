@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: video-downloader
+    env: python
+    buildCommand: ""
+    startCommand: gunicorn app:app
+
+  - type: worker
+    name: celery-worker
+    env: python
+    buildCommand: ""
+    startCommand: celery -A app.celery worker --loglevel=info
+
+  - type: redis
+    name: video-downloader-redis
+    plan: free
+

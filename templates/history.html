@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download History</title>
+</head>
+<body>
+    <h1>Download History</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>URL</th>
+                <th>Format</th>
+                <th>File Name</th>
+                <th>Timestamp</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for download in downloads %}
+            <tr>
+                <td>{{ download.url }}</td>
+                <td>{{ download.format_choice }}</td>
+                <td>{{ download.file_name }}</td>
+                <td>{{ download.timestamp }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ url_for('index') }}">Go back to downloader</a>
+</body>
+</html>
+

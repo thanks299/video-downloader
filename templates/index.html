@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Video Downloader</title>
+		<script defer src="{{url_for('static', filename='main.js')}}"></script>
+		<link
+			rel="stylesheet"
+			href="{{ url_for('static', filename='styles.css') }}" />
+
+		<!-- <link rel="stylesheet" href="../static/styles.css" /> -->
+	</head>
+	<body>
+		<h1>Download Video</h1>
+		<form method="POST">
+			<label for="url" class="url">Video URL:</label>
+			<input type="text" id="videoUrl" name="url" required /><br /><br />
+
+			<label for="format" class="format">Select Format:</label>
+			<select id="format" name="format" required>
+				<option value="mp4">MP4</option>
+				<option value="mkv">MKV</option>
+				<option value="webm">WEBM</option>
+			</select>
+
+			<br />
+			<br />
+
+			<button class="button" id="downloadBtn" type="submit">Download</button>
+
+		</form>
+
+		<a href="" download id="downloadLink"> Click to save file </a>
+	</body>
+</html>
