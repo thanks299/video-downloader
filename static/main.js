@@ -27,24 +27,28 @@ const download = async (videoUrl, format) => {
         await getVideo(data.task_id);
     }
     catch (e) {
-
+	    console.error('Error during video download:', e);
     }
 }
 
 const getVideo = async (id) => {
-    const res = await fetch(`/status/${id}`);
+    try {
+        const res = await fetch(`/status/${id}`);  // Check the status of the download
+        if (res.ok) {
+            const fileBlob = await res.blob();  // Get the file blob
+            link.href = URL.createObjectURL(fileBlob);  // Create an object URL for the blob
 
+            // Show the download link by removing the hidden class
+            link.classList.remove('hidden');
 
+            // filename for the download
+            link.download = "Click to save file";
 
-    if (res.ok) {
-        const fileBlob = await res.blob();
-        link.href = URL.createObjectURL(fileBlob);
-
-
-        link.classList.toggle('hidden')
-        console.log(link)// Specify the file name for download
-        // link.click();  // Simulate click to download the file
-        // document.body.removeChild(link);
+            console.log('File ready for download');
+        } else {
+            console.error('Failed to retrieve video');
+        }
+    } catch (e) {
+        console.error('Error fetching video status:', e);
     }
-
 }

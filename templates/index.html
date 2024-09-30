@@ -1,36 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Video Downloader</title>
-		<script defer src="{{url_for('static', filename='main.js')}}"></script>
-		<link
-			rel="stylesheet"
-			href="{{ url_for('static', filename='styles.css') }}" />
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video Downloader</title>
+    <script defer src="{{ url_for('static', filename='main.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
 
-		<!-- <link rel="stylesheet" href="../static/styles.css" /> -->
-	</head>
-	<body>
-		<h1>Download Video</h1>
-		<form method="POST">
-			<label for="url" class="url">Video URL:</label>
-			<input type="text" id="videoUrl" name="url" required /><br /><br />
+    <!-- Optional inline CSS for animations -->
+    <style>
+        /* General page styling */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
 
-			<label for="format" class="format">Select Format:</label>
-			<select id="format" name="format" required>
-				<option value="mp4">MP4</option>
-				<option value="mkv">MKV</option>
-				<option value="webm">WEBM</option>
-			</select>
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease-in-out;
+        }
 
-			<br />
-			<br />
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: fadeIn 1.5s ease-in-out;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
 
-			<button class="button" id="downloadBtn" type="submit">Download</button>
+        /* Button animation on hover */
+        .button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
 
-		</form>
+        .button:hover {
+            transform: scale(1.1);
+            background-color: #45a049;
+        }
 
-		<a href="" download id="downloadLink"> Click to save file </a>
-	</body>
+        /* Hidden download link styling and animation */
+        .hidden {
+            display: none;
+        }
+
+        #downloadLink {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #2196F3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            animation: slideIn 1s ease-in-out;
+        }
+
+        #downloadLink.hidden {
+            display: none;
+        }
+
+        #downloadLink:not(.hidden) {
+            display: inline-block;
+            animation: slideIn 1s ease-in-out forwards;
+        }
+
+        /* Keyframes for animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>Download Video</h1>
+        <form method="POST">
+            <label for="url" class="url">Video URL:</label>
+            <input type="text" id="videoUrl" name="url" required /><br /><br />
+
+            <label for="format" class="format">Select Format:</label>
+            <select id="format" name="format" required>
+                <option value="mp4">MP4</option>
+                <option value="mkv">MKV</option>
+                <option value="webm">WEBM</option>
+            </select>
+
+            <br /><br />
+
+            <button class="button" id="downloadBtn" type="submit">Download</button>
+        </form>
+
+        <!-- The download link is initially hidden -->
+        <a href="" download id="downloadLink" class="hidden">Click to save file</a>
+    </div>
+</body>
 </html>
+
