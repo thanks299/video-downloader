@@ -34,3 +34,4 @@ wcwidth==0.2.13
 websockets==13.1
 Werkzeug==3.0.4
 yt-dlp==2024.9.27
+gunicon
