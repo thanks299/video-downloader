@@ -1,0 +1,36 @@
+# Ignore virtual environment folder
+venv/
+env/
+
+# Ignore Python bytecode and cache
+__pycache__/
+*.pyc
+
+# Ignore large video, audio, and media files
+*.mp4
+*.avi
+*.mkv
+*.mp3
+*.wav
+*.flac
+
+# Ignore local database files
+*.sqlite3
+*.db
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore node_modules folder if you're using Node.js in part of the project
+node_modules/
+
+# Ignore other large or unnecessary files
+*.zip
+*.tar.gz
+*.rar
+*.iso
+
+# Ignore .git directory and version control data
+.git/
+
