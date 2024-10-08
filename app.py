@@ -10,10 +10,10 @@ from celery import Celery
 
 app = Flask(__name__)
 # Configure SQLite Database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///downloads.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://thanks_user:SUqAdiGsyBeWKxBqAp5XUa7YQm5TyGi3@dpg-cs2game8ii6s739hq440-a.oregon-postgres.render.com/thanks'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['CELERY_BROKER_URL'] = 'redis://localhost:6379/0'
-app.config['CELERY_RESULT_BACKEND'] = 'sqlite:///downloads.db'
+app.config['CELERY_BROKER_URL'] = 'rediss://red-crtcjbm8ii6s73eklv9g:nmPZdC7Q687jOBftyHMVtezZX7PLWNCh@oregon-redis.render.com:6379'
+app.config['CELERY_RESULT_BACKEND'] = 'postgresql://thanks_user:SUqAdiGsyBeWKxBqAp5XUa7YQm5TyGi3@dpg-cs2game8ii6s739hq440-a.oregon-postgres.render.com/thanks'
 
 db = SQLAlchemy(app)
 
